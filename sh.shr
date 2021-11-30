@@ -228,6 +228,8 @@ D read_hex_loop
     E read_hex_ret
     M 0 x20
     E read_hex_ret
+    M 0 0
+    E read_hex_ret
 
     C calc_hex
     l 2 4
