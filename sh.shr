@@ -421,7 +421,7 @@ D op_shl
     = 0 xC1 C write8
 
     C readint
-    + 0 0 xE8
+    + 0 0 xE0
     C write8
 
     C readint J write8
