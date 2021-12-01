@@ -11,17 +11,17 @@ build/%: build/%.tmp
 .DELETE_ON_ERROR:;
 
 build/s3.tmp: build/s2
-	$< < sh.shr
+	$< < shr.shr
 	readelf -a build/out
 
 build/s2.tmp: build/s1
-	$< < sh.shr
+	$< < shr.shr
 	readelf -a build/out
 
 # Bootstrapping
-build/s1.asm: transpile_shr_to_asm.py sh.shr  Makefile
+build/s1.asm: transpile_shr_to_asm.py shr.shr  Makefile
 	@mkdir -p $(@D)
-	python $< < sh.shr > $@
+	python $< < shr.shr > $@
 
 build/s1.o: build/s1.asm
 	nasm -f elf64 -F dwarf $< -o $@
