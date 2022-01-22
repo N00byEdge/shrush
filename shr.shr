@@ -1,10 +1,14 @@
 D var_addrs P P P P
 D var_names P P P P
 D tmp_label_buffer P
+D source_code_buf P P P P P P P P P P P P P P P P
+
 D bss_size I 0
 D current_addr I x401000
 D next_var_addr Q var_addrs
 D next_var_name Q var_names
+
+D curr_source_ptr Q source_code_buf
 
 D cond_ret R
 
@@ -106,13 +110,11 @@ D curraddr
     R
 
 D read
-    = 2 1
-    - 6 4 8
-    = 7 0
-    = 0 0
-    S 0 6
-    !
-    L 0 6
+    A 1 curr_source_ptr
+    L 2 1
+    b 0 2
+    + 2 2 1
+    S 2 1
     R
 
 D write8
@@ -656,6 +658,12 @@ e
     !
     M 0 3
     N exit
+
+    = 2 xFFFF
+    A 6 source_code_buf
+    = 7 0
+    = 0 0
+    !
 
     = 6 x1000
     C seek
