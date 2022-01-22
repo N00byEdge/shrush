@@ -1,5 +1,5 @@
-D var_addrs P P P P P P P P P P P P P P P P
-D var_names P P P P P P P P P P P P P P P P
+D var_addrs P P P P
+D var_names P P P P
 D tmp_label_buffer P
 D bss_size I 0
 D current_addr I x401000
